@@ -1,0 +1,111 @@
+.navBrand {
+  font-size: 2.5rem;
+}
+
+.mainContainer {
+  margin-top: 10px;
+}
+
+.AD {
+  text-align: center;
+  border: 1px solid black;
+}
+
+
+/* Home Page CSS */
+
+.mainContent {
+
+}
+
+.sponsoredQuestion {
+  margin-top: 10px;
+
+}
+
+.sponsoredContentImage {
+  border: 2px solid black;
+}
+
+.mainPageItem {
+  margin-top: 10px;
+}
+
+.imageBox {
+  border: 2px solid black;
+}
+
+.dailyDripHeader {
+  background-color: lightgrey;
+  text-align: center;
+  padding: 15px 0px 15px 0px;
+}
+
+.dailyDrip {
+  border: 1px solid;
+}
+
+.topZinger {
+  padding: 7px;
+  margin-top: 10px;
+  border: 1px solid;
+}
+
+/* End Home Page CSS */
+
+
+
+/* Profile Page CSS */
+
+.profileCSS {
+  width: 70%;
+  margin: 0 auto;
+}
+
+.profileHeaderContainer {
+}
+
+.leftHeader {
+  text-align: center;
+}
+
+.profileGraphic {
+  background: url(http://placehold.it/50x50);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    overflow:hidden;
+    -webkit-border-radius:200px;
+    -moz-border-radius:200px;
+    border-radius:200px;
+    width:200px;
+    height:200px;
+    margin: auto;
+}
+
+.fakeBar {
+  background-color: black;
+  height: 15px;
+  width: 100%;
+}
+
+td {
+  border: 1px solid;
+  text-align: center;
+  padding: 10px;
+}
+
+table {
+  width: 100%;
+  border: 3px solid;
+}
+
+.topZingerProfile {
+  border: 2px solid;
+}
+
+.topSoapBoxProfile {
+  border: 2px solid;
+}
+
+/* End Profile Page CSS */

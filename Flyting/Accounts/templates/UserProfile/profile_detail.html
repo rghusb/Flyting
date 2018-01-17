@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+{% load staticfiles %}
+{% block content %}
+  <div class="profileCSS">
+
+    {# Profile #}
+    <div class="profileHeaderContainer">
+      <div class="row">
+        <div class="col-lg-4 leftHeader">
+          <div class="profileGraphic" style="background: url({% static 'Flyting/images/pic.jpg' %});height:100px; width:100px;"></div>
+          <br>
+          <input type="button" name="" value="Follow">
+          <p>234 Follwers</p>
+          <p>14,112 Points</p>
+        </div>
+        <div class="col-lg-8">
+          <h3 style="text-align:right;">{{customuser.username}}</h3>
+          <hr>
+          <div class="fakeBar"></div>
+          <p>Persuasion</p>
+          <div class="fakeBar"></div>
+          <p>Wit</p>
+          <div class="fakeBar"></div>
+          <p>Vigor</p>
+          <div class="fakeBar"></div>
+          <p>Understanding</p>
+        </div>
+      </div>
+    </div>
+
+    {# Trophies #}
+    <div class="row">
+      <div class="col-lg-12">
+        <table>
+          <tr>
+            <td>Trophy 1</td>
+            <td>Trophy 2</td>
+            <td>Trophy 3</td>
+            <td>Trophy 4</td>
+          </tr>
+          <tr>
+            <td>Trophy 5</td>
+            <td>Trophy 6</td>
+            <td>Trophy 7</td>
+            <td>Trophy 8</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <br>
+
+    {# AD space #}
+    <div class="row">
+      <div class="AD col-lg-12">
+        <h5>300X600 AD SPACE</h5>
+      </div>
+    </div>
+
+    <br>
+
+    {# User's Top Zinger #}
+    <div class="row">
+      <div class="topZingerProfile col-lg-12">
+        <h3>Top Zinger</h3>
+      </div>
+    </div>
+
+    <br>
+
+    {# AD Space #}
+    <div class="row">
+      <div class="AD col-lg-12">
+        <h5>300X600 AD SPACE</h5>
+      </div>
+    </div>
+
+    <br>
+
+    {# User's Top SoapBox #}
+    <div class="row">
+      <div class="topSoapBoxProfile col-lg-12">
+        <h3>Top SoapBox</h3>
+      </div>
+    </div>
+
+  </div>
+
+
+{% endblock %}
