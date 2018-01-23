@@ -24,20 +24,20 @@
 
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'Articles:article-home' %}">Politics</a>
+            <a class="nav-link" href="{% url 'Categories:detail' slug="politics" %}">Politics</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Culture</a>
+            <a class="nav-link" href="{% url 'Categories:detail' slug="culture" %}">Culture</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Sports</a>
+            <a class="nav-link" href="{% url 'Categories:detail' slug="sports" %}">Sports</a>
           </li>
         </ul>
 
         {% if user.is_authenticated %}
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'Accounts:profile_detail' pk=user.pk %}">{{user.username}}'s Profile</a>
+              <a class="nav-link" href="{% url 'Accounts:profile-detail' pk=user.pk %}">{{user.username}}'s Profile</a>
             </li>
             <span class="navbar-text">|</span>
             <li class="nav-item">

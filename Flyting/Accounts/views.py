@@ -5,6 +5,9 @@ from django.views.generic import CreateView, DetailView
 from . import models
 from . import forms
 
+from django.contrib.auth import get_user_model
+CustomUser = get_user_model()
+
 class SignUp(CreateView):
     form_class = forms.UserCreateForm
     #second_form_class = forms.ProfileCreateForm
@@ -22,8 +25,7 @@ class ProfileDetailView(DetailView):
             id__iexact=self.kwargs.get("pk")
         )
 
-
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        #context["profile_user"] = self.
-        return context
+    # def get_context_data(self, **kwargs):
+    #     context = super().get_context_data(**kwargs)
+    #     context["all_users"] = self.request.user
+    #     return context

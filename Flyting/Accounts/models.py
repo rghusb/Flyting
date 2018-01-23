@@ -4,6 +4,7 @@ from django.utils import timezone
 
 
 class CustomUser(auth.models.AbstractUser):
+    somename = models.CharField(max_length=255, default="WOWOWOW")
 
     def __str__(self):
         return "@{}".format(self.email)

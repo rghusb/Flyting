@@ -1,0 +1,13 @@
+{% extends "Articles/article_base.html" %}
+
+{% block article_content %}
+  {% if article_list %}
+    <div class="col-lg-12">
+      {% for article in article_list %}
+          {% include "Articles/_article.html" %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <h5>There are no articles yet!</h5>
+  {% endif %}
+{% endblock %}

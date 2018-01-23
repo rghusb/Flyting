@@ -1,0 +1,10 @@
+{% extends "Categories/category_base.html" %}
+
+{% block category_content %}
+<h4>Create A New Category</h4>
+  <form method="POST" action="{% url 'Categories:create' %}" id="categoryForm">
+  	{% csrf_token %}
+  	{{ form.as_ul }}
+  	<input type="submit" value="Create" class="btn btn-primary btn-large">
+  </form>
+{% endblock %}

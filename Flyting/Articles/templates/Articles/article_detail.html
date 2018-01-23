@@ -1,0 +1,13 @@
+{% extends "Articles/article_base.html" %}
+
+{% block article_content %}
+  <div class="col-lg-12">
+    <h2>{{article.header}}</h2>
+    <h5>{{article.sub_header}}</h5>
+    <hr>
+    <p>{{article.message_html|safe}}</p>
+    <hr>
+    <p>By: {{article.customuser.username}}</p>
+    <p>Published on: {{article.created_at}}</p>
+  </div>
+{% endblock %}

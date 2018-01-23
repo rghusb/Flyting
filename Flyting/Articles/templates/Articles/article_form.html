@@ -1,0 +1,10 @@
+{% extends "Articles/article_base.html" %}
+
+{% block article_content %}
+  <h4>Create New Article</h4>
+  <form method="POST" action="{% url 'Articles:create' %}" id="articleForm">
+  	{% csrf_token %}
+  	{{ form.as_ul }}
+  	<input type="submit" value="Post" class="btn btn-primary btn-large">
+  </form>
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block content %}
+  <div class="articlePage">
+    <div class="container">
+      <div class="row">
+        {% block pre_article %}{% endblock %}
+        {% block article_content %}{% endblock %}
+        {% block post_article %}{% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
