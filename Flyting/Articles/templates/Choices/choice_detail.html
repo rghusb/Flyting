@@ -14,7 +14,6 @@
             <br>
           {% endfor %}
           <input type="submit" value="Vote">
-          {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
         </form>
         <br>
         <a class="btn btn-secondary" href="{% url 'Articles:vote-redirect' pk=article.pk %}">Cancel</a>

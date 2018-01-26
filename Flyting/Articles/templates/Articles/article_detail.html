@@ -41,43 +41,59 @@
       </div>
     </div>
 
+    <a name="QUESTION"></a>
+
     <div class="row">
       <div class="col-lg-12 text-center">
         <br>
         <br>
         <div class="jumbotron">
           <h2>{{article.question}}</h2>
-          <br>
-          <a class="btn btn-dark" href="{% url 'Articles:vote-page' pk=article.pk %}">Vote!</a>
-        </div>
-
-        <div class="AD" style="padding:50px;">
-          <h5>900x300 AD SPACE</h5>
-        </div>
-
-        <br>
-
-        {% if article.choices.count <= 0 %}
-          <h3>No choices yet!</h3>
-        {% elif article.choices.count == 2 %}
-          <div class="row">
-            {% for choice in article.choices.all %}
-              <div class="col-lg-6">
-                <div class="voteResults jumbotron">
-                  <h3>{{choice.VotePercentage}}</h3>
-                  <h3>{{choice.choice_text}}</h3>
-                </div>
+          {% if not user_vote %}
+            <h5>Total Votes: {{total_votes}}</h5>
+            {% if article.choices.count <= 0 %}
+              <h3>No choices yet!</h3>
+            {% elif article.choices.count == 2 %}
+              <br>
+              <div class="row">
+                {% for choice in article.choices.all %}
+                  <div class="col-lg-6">
+                    <div class="voteResults">
+                      <a class="btn btn-lg btn-dark" href="{% url 'Articles:vote' article_id=article.id choice_id=choice.id user_id=user.id %}">{{choice.choice_text}}</a>
+                    </div>
+                  </div>
+                {% endfor %}
               </div>
-            {% endfor %}
+            {% else %}
+              <h3>Results Error</h3>
+            {% endif %}
+          {% endif %}
+        </div>
+
+        {% if user_vote %}
+          <div class="AD" style="padding:15px;">
+            <h5>900x90 AD SPACE</h5>
           </div>
-        {% else %}
-          <h3>Results Error</h3>
+
+          <br>
+
+          <div class="jumbotron">
+            <h2> <strong>You selected team: "{{user_vote.choice.choice_text}}"</strong> </h2>
+            <h3>Total Votes: {{total_votes}}</h3>
+            <div class="row">
+              {% for choice in article.choices.all %}
+                <div class="col-lg-6">
+                  <h4><strong>{{choice.choice_text}}</strong></h4>
+                  <h5>{{choice.vote_percentage}}</h5>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
         {% endif %}
 
       </div>
     </div>
 
-    <br>
 
     {# AD Space #}
     <div class="AD" style="padding:50px;">

@@ -7,7 +7,7 @@ class CustomUser(auth.models.AbstractUser):
     somename = models.CharField(max_length=255, default="WOWOWOW")
 
     def __str__(self):
-        return "@{}".format(self.email)
+        return "@{}".format(self.username)
 
 # class Profile(models.Model):
 #     user_profile = models.OneToOneField(CustomUser, on_delete=models.CASCADE)

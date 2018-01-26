@@ -36,6 +36,13 @@ class Article(models.Model):
             }
         )
 
+    def get_total_votes(self):
+        choices_set = self.choices.all()
+        total = 0
+        for cur in choices_set:
+            total+=cur.votes
+        return total
+
     class Meta:
         ordering = ["-created_at"]
         unique_together = ["customuser", "message"]
@@ -48,7 +55,7 @@ class Choice(models.Model):
     def __str__(self):
         return self.article.question + " ==> " + self.choice_text
 
-    def VotePercentage(self):
+    def vote_percentage(self):
         choices_set = self.article.choices.all()
         total = 0
         for cur in choices_set:
@@ -56,3 +63,15 @@ class Choice(models.Model):
         if total == 0:
             return "0.0%"
         return str(round((self.votes / total)*100, 1)) + "%"
+
+class Vote(models.Model):
+    article = models.ForeignKey(Article, on_delete=models.CASCADE)
+    customuser = models.ForeignKey(CustomUser, on_delete=models.CASCADE)
+    choice = models.ForeignKey(Choice, on_delete=models.CASCADE)
+    voted_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.article.question + "=>" + self.customuser.username + "=>" + self.choice.choice_text
+
+    class Meta:
+        unique_together = ["article", "customuser"]
