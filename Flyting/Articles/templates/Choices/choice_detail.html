@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="jumbotron">
+        <h1>{{article.question}}</h1>
+        <hr>
+        <form action="{% url 'Articles:vote' article_id=article.id %}" method="post">
+          {% csrf_token %}
+          {% for choice in article.choices.all %}
+            <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
+            <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+            <br>
+          {% endfor %}
+          <input type="submit" value="Vote">
+          {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        </form>
+        <br>
+        <a class="btn btn-secondary" href="{% url 'Articles:vote-redirect' pk=article.pk %}">Cancel</a>
+      </div>
+    </div>
+  </div>
+{% endblock %}

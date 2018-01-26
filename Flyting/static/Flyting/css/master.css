@@ -8,7 +8,8 @@
 
 .AD {
   text-align: center;
-  border: 1px solid black;
+  border: 1px dotted black;
+  padding: 15px;
 }
 
 
@@ -62,9 +63,6 @@
   margin: 0 auto;
 }
 
-.profileHeaderContainer {
-}
-
 .leftHeader {
   text-align: center;
 }
@@ -101,11 +99,39 @@ table {
 }
 
 .topZingerProfile {
-  border: 2px solid;
+  border: 5px solid;
 }
 
 .topSoapBoxProfile {
-  border: 2px solid;
+  border: 5px solid;
 }
 
 /* End Profile Page CSS */
+
+/* Article CSS */
+a{
+  color: rgb(0,0,0);
+}
+a:hover {
+  color: rgb(0,0,0);
+}
+
+.imgBoxBorder {
+  padding: 10px;
+  /* border: 1px solid; */
+}
+
+.col-centered {
+  float: none;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.topZingerArticle {
+  border: 5px solid;
+}
+
+.topSoapBoxArticle {
+  border: 5px solid;
+}
+/* End Article CSS */

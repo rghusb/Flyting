@@ -1,13 +1,108 @@
 {% extends "Articles/article_base.html" %}
 
 {% block article_content %}
-  <div class="col-lg-12">
-    <h2>{{article.header}}</h2>
-    <h5>{{article.sub_header}}</h5>
-    <hr>
-    <p>{{article.message_html|safe}}</p>
-    <hr>
-    <p>By: {{article.customuser.username}}</p>
-    <p>Published on: {{article.created_at}}</p>
+  <div class="col-lg-12" style="margin:auto;max-width:80%;">
+
+    <div class="AD">
+      <h5>900x90 AD SPACE</h5>
+    </div>
+
+    <br>
+
+    <div class="">
+      <h1>{{article.sub_header}}</h1>
+      <hr>
+      <p style="margin-bottom:0.2rem;">By: <a href="{% url "Accounts:profile-detail" pk=article.customuser.id %}">{{article.customuser.username}}</a></p>
+      <p style="margin-bottom:0.2rem;">Published on: {{article.created_at}}</p>
+      <hr>
+    </div>
+
+
+    <div class="row">
+      <div class="col-md-6 col-lg-8">
+        <p>{{article.message_html|safe}}</p>
+        <div class="AD">
+          <h5>728x90 AD SPACE</h5>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 imgBoxBorder">
+        <div class="imageBox">
+          <h4>SOURCE IMAGE</h4>
+        </div>
+        <p>HEADLINE</p>
+        <div class="imageBox">
+          <h4>SOURCE IMAGE</h4>
+        </div>
+        <p>HEADLINE</p>
+        <div class="imageBox">
+          <h4>SOURCE IMAGE</h4>
+        </div>
+        <p>HEADLINE</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <br>
+        <br>
+        <div class="jumbotron">
+          <h2>{{article.question}}</h2>
+          <br>
+          <a class="btn btn-dark" href="{% url 'Articles:vote-page' pk=article.pk %}">Vote!</a>
+        </div>
+
+        <div class="AD" style="padding:50px;">
+          <h5>900x300 AD SPACE</h5>
+        </div>
+
+        <br>
+
+        {% if article.choices.count <= 0 %}
+          <h3>No choices yet!</h3>
+        {% elif article.choices.count == 2 %}
+          <div class="row">
+            {% for choice in article.choices.all %}
+              <div class="col-lg-6">
+                <div class="voteResults jumbotron">
+                  <h3>{{choice.VotePercentage}}</h3>
+                  <h3>{{choice.choice_text}}</h3>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% else %}
+          <h3>Results Error</h3>
+        {% endif %}
+
+      </div>
+    </div>
+
+    <br>
+
+    {# AD Space #}
+    <div class="AD" style="padding:50px;">
+      <h5>900x300 AD SPACE</h5>
+    </div>
+
+    <br>
+
+    {# Top Zinger #}
+    <div class="topZingerArticle">
+      <h3>Top Zinger</h3>
+    </div>
+
+    <br>
+
+    <div class="AD">
+      <h5>900x90 AD SPACE</h5>
+    </div>
+
+    <br>
+
+    {# Top SoapBox #}
+    <div class="topSoapBoxArticle">
+      <h3>Top SoapBox</h3>
+    </div>
+
   </div>
 {% endblock %}
