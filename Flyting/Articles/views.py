@@ -85,11 +85,15 @@ class VoteRedirectView(LoginRequiredMixin, generic.RedirectView):
     def get_redirect_url(self, *args, **kwargs):
         return reverse("Articles:article-detail", kwargs={"pk": self.kwargs.get("article_id")}) + "#QUESTION"
 
+    # Vote can only be accessed if user is logged in and hasn't voted due to how article_detail page is setup with template tags
     def get(self, request, *args, **kwargs):
-        has_voted = models.Vote.objects.filter(article__id=self.kwargs.get("article_id"), customuser__id=self.kwargs.get("user_id")).exists()
-
-        if not has_voted:
-            choice = get_object_or_404(models.Choice, pk=self.kwargs.get("choice_id"))
-            models.Vote.objects.create(article=choice.article, customuser=self.request.user, choice=choice)
+        if self.kwargs.get('user_id'):
+            try:
+                choice = get_object_or_404(models.Choice, pk=self.kwargs.get("choice_id"))
+                models.Vote.objects.create(article=choice.article, customuser=self.request.user, choice=choice)
+                choice.votes += 1
+                choice.save()
+            except Exception:
+                print("Error in VoteRedirectView")
 
         return super().get(request, *args, **kwargs)

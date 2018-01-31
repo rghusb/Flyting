@@ -10,5 +10,6 @@ urlpatterns = [
     path("<int:pk>/",views.ArticleDetailView.as_view(),name="article-detail"),
     path("delete/<int:pk>/",views.DeleteArticleView.as_view(),name="delete"),
     # path("<int:pk>/voting/", views.VotingDetailView.as_view(), name="vote-page"),
+    path("<int:article_id>/vote/", views.VoteRedirectView.as_view(), name="vote"),
     path("<int:article_id>/vote/<int:choice_id>/by/<int:user_id>/", views.VoteRedirectView.as_view(), name="vote"),
 ]

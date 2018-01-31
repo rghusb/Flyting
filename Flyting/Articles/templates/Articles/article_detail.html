@@ -49,25 +49,34 @@
         <br>
         <div class="jumbotron">
           <h2>{{article.question}}</h2>
-          {% if not user_vote %}
-            <h5>Total Votes: {{total_votes}}</h5>
-            {% if article.choices.count <= 0 %}
-              <h3>No choices yet!</h3>
-            {% elif article.choices.count == 2 %}
-              <br>
-              <div class="row">
-                {% for choice in article.choices.all %}
-                  <div class="col-lg-6">
-                    <div class="voteResults">
-                      <a class="btn btn-lg btn-dark" href="{% url 'Articles:vote' article_id=article.id choice_id=choice.id user_id=user.id %}">{{choice.choice_text}}</a>
+          <br>
+          <h4>Total Votes: {{total_votes}}</h4>
+
+          {% if user.is_authenticated %}
+
+            {% if not user_vote %}
+              {% if article.choices.count <= 0 %}
+                <h3>No choices yet!</h3>
+              {% elif article.choices.count == 2 %}
+                <br>
+                <div class="row">
+                  {% for choice in article.choices.all %}
+                    <div class="col-lg-6">
+                      <div class="voteResults">
+                        <a class="btn btn-lg btn-dark" href="{% url 'Articles:vote' article_id=article.id choice_id=choice.id user_id=user.id %}">{{choice.choice_text}}</a>
+                      </div>
                     </div>
-                  </div>
-                {% endfor %}
-              </div>
-            {% else %}
-              <h3>Results Error</h3>
+                  {% endfor %}
+                </div>
+              {% else %}
+                <h3>Results Error</h3>
+              {% endif %}
             {% endif %}
+
+          {% else %}
+            <a class="btn btn-lg btn-dark" href="{% url 'Articles:vote' article_id=article.id %}">Login to Vote</a>
           {% endif %}
+
         </div>
 
         {% if user_vote %}
@@ -79,7 +88,7 @@
 
           <div class="jumbotron">
             <h2> <strong>You selected team: "{{user_vote.choice.choice_text}}"</strong> </h2>
-            <h3>Total Votes: {{total_votes}}</h3>
+            <br>
             <div class="row">
               {% for choice in article.choices.all %}
                 <div class="col-lg-6">
