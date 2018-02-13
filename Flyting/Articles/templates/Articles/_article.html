@@ -4,7 +4,6 @@
     <h1>{{article.question}}</h1>
     <h5>{{article.sub_header}}</h5>
   </a>
-  <a href="{% url "Accounts:profile-detail" pk=article.customuser.id %}"></a>
   <p>By: <a href="{% url "Accounts:profile-detail" pk=article.customuser.id %}">{{article.customuser.username}}</a></p>
   <p>Created on: {{article.created_at}}</p>
 </div>

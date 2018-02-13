@@ -14,66 +14,103 @@
       <div class="sponsoredQuestion">
         <h3>SPONSORED QUESTION</h3>
         <hr>
-        <div class="sponsoredContentImage">
-          <h4>HEADER IMAGE</h4>
-        </div>
-        <p>HEADLINE</p>
+        {% if sponsored_list %}
+          {% for sponsored_article in sponsored_list %}
+            <a href="{% url 'Articles:article-detail' pk=sponsored_article.id %}">
+              <div class="sponsoredContentImage">
+                <h4>HEADER IMAGE</h4>
+              </div>
+              <p>{{ sponsored_article.question }}</p>
+            </a>
+          {% endfor %}
+        {% else %}
+          <div class="sponsoredContentImage">
+            <h4>HEADER IMAGE</h4>
+          </div>
+          <p>HEADLINE</p>
+        {% endif %}
       </div>
 
       <div class="mainPageItem">
-        <h3>POLITICS</h3>
+        <h3>Politics</h3>
         <hr>
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+          {% if politics_list %}
+            {% for politics_article in politics_list %}
+              <div class="col-lg-4">
+                <a href="{% url 'Articles:article-detail' pk=politics_article.id %}">
+                  <div class="imageBox">
+                    <h4>STORY IMAGE</h4>
+                  </div>
+                  <p>{{politics_article.question}}</p>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
+          {% endif %}
         </div>
 
       </div>
 
       <div class="mainPageItem">
-        <h3>CULTURE</h3>
+        <h3>Culture</h3>
         <hr>
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+          {% if culture_list %}
+            {% for culture_article in culture_list %}
+              <div class="col-lg-4">
+                <a href="{% url 'Articles:article-detail' pk=culture_article.id %}">
+                  <div class="imageBox">
+                    <h4>STORY IMAGE</h4>
+                  </div>
+                  <p>{{culture_article.question}}</p>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
+          {% endif %}
         </div>
 
       </div>
@@ -83,26 +120,39 @@
         <hr>
 
         <div class="row">
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+          {% if sports_list %}
+            {% for sports_article in sports_list %}
+              <div class="col-lg-4">
+                <a href="{% url 'Articles:article-detail' pk=sports_article.id %}">
+                  <div class="imageBox">
+                    <h4>STORY IMAGE</h4>
+                  </div>
+                  <p>{{sports_article.question}}</p>
+                </a>
+              </div>
+            {% endfor %}
+          {% else %}
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
 
-          <div class="col-lg-4">
-            <div class="imageBox">
-              <h4>STORY IMAGE</h4>
+            <div class="col-lg-4">
+              <div class="imageBox">
+                <h4>STORY IMAGE</h4>
+              </div>
+              <p>HEADLINE</p>
             </div>
-            <p>HEADLINE</p>
-          </div>
+          {% endif %}
         </div>
 
       </div>
@@ -119,26 +169,37 @@
       <div class="dailyDrip">
         <h3 class="dailyDripHeader">Daily Drip</h3>
         <ol>
-          <li>
-            <h5>Heading 1</h5>
-            <p>Subheader information goes down here for more info.</p>
-          </li>
-          <li>
-            <h5>Heading 2</h5>
-            <p>Subheader information goes down here for more info.</p>
-          </li>
-          <li>
-            <h5>Heading 3</h5>
-            <p>Subheader information goes down here for more info.</p>
-          </li>
-          <li>
-            <h5>Heading 4</h5>
-            <p>Subheader information goes down here for more info.</p>
-          </li>
-          <li>
-            <h5>Heading 5</h5>
-            <p>Subheader information goes down here for more info.</p>
-          </li>
+          {% if daily_drip %}
+            {% for drip_article in daily_drip %}
+              <a href="{% url 'Articles:article-detail' pk=drip_article.id %}">
+                <li style="padding-right:5px;">
+                  <h5>{{ drip_article.question }}</h5>
+                  <p>{{ drip_article.sub_header }}</p>
+                </li>
+              </a>
+            {% endfor %}
+          {% else %}
+            <li>
+              <h5>Heading 1</h5>
+              <p>Subheader information goes down here for more info.</p>
+            </li>
+            <li>
+              <h5>Heading 2</h5>
+              <p>Subheader information goes down here for more info.</p>
+            </li>
+            <li>
+              <h5>Heading 3</h5>
+              <p>Subheader information goes down here for more info.</p>
+            </li>
+            <li>
+              <h5>Heading 4</h5>
+              <p>Subheader information goes down here for more info.</p>
+            </li>
+            <li>
+              <h5>Heading 5</h5>
+              <p>Subheader information goes down here for more info.</p>
+            </li>
+          {% endif %}
         </ol>
       </div>
       <div class="topZinger">

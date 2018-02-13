@@ -1,0 +1,8 @@
+
+<div class="jumbotron">
+  <a href="{% url "Soapbox:soapbox-detail" pk=soapbox.id %}">
+    <h2>{{ soapbox.message_html|safe }}</h2>
+  </a>
+  <p>By: <a href="{% url "Accounts:profile-detail" pk=soapbox.customuser.id %}">{{soapbox.customuser.username}}</a></p>
+  <p>Created on: {{soapbox.created_at}}</p>
+</div>

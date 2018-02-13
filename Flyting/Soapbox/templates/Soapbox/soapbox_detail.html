@@ -1,0 +1,10 @@
+{% extends "Soapbox/soapbox_base.html" %}
+
+{% block soapbox_content %}
+  <div class="col-lg-12">
+    <h3>{{ soapbox.message_html|safe }}</h3>
+    <h3>{{ soapbox.article.question }}</h3>
+    <br>
+    <h5>Article ID: {{ soapbox.article.id }}</h5>
+  </div>
+{% endblock %}

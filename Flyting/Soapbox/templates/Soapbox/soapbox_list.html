@@ -1,0 +1,21 @@
+{% extends "Soapbox/soapbox_base.html" %}
+
+{% block pre_soapbox %}
+  <div class="col-lg-12">
+    <div class="">
+      <h2></h2>
+    </div>
+  </div>
+{% endblock %}
+
+{% block soapbox_content %}
+  <div class="col-lg-12">
+    {% if soapbox_list %}
+        {% for soapbox in soapbox_list %}
+            {% include "Soapbox/_soapbox.html" %}
+        {% endfor %}
+    {% else %}
+      <h5>There are no soapboxes yet!</h5>
+    {% endif %}
+  </div>
+{% endblock %}

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'Accounts',
     'Articles',
     'Categories',
+    'Soapbox',
 ]
 
 AUTH_USER_MODEL = 'Accounts.CustomUser'

@@ -45,7 +45,6 @@ class Article(models.Model):
 
     class Meta:
         ordering = ["-created_at"]
-        unique_together = ["customuser", "message"]
 
 class Choice(models.Model):
     article = models.ForeignKey(Article, related_name="choices", on_delete=models.CASCADE)
@@ -53,7 +52,7 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.article.question + " ==> " + self.choice_text
+        return self.article.question + " ==> " + self.choice_text + " ==> " + str(self.id)
 
     def vote_percentage(self):
         choices_set = self.article.choices.all()
@@ -63,6 +62,13 @@ class Choice(models.Model):
         if total == 0:
             return "0.0%"
         return str(round((self.votes / total)*100, 1)) + "%"
+
+    def all_vote_percentages(self):
+        choices_set = self.article.choices.all()
+        choices_percentage_list = []
+        for cur in choices_set:
+            choices_percentage_list.append(cur.vote_percentage())
+        return choices_percentage_list
 
 class Vote(models.Model):
     article = models.ForeignKey(Article, on_delete=models.CASCADE)

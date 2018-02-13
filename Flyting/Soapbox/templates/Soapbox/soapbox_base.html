@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <div>
+    <div class="container">
+      <div class="row">
+        {% block pre_soapbox %}{% endblock %}
+        {% block soapbox_content %}{% endblock %}
+        {% block post_soapbox %}{% endblock %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
