@@ -1,0 +1,19 @@
+
+<div style="margin-bottom:10px;" class="jumbotron slimJumbo">
+  <div class="row">
+    <div class="col-lg-6 text-left">
+      <h5 style="margin:0;">@: <a href="{% url 'Accounts:profile-detail' pk=soapbox.customuser.id %}">{{soapbox.customuser.username}}</a>  -  <em>{{ soapbox.team }}</em></h5>
+    </div>
+
+    <div class="col-lg-6 soapboxPointButtons text-right">
+      <h5>Points:
+        <span class="{{ soapbox.id }}">{{ soapbox.points }}</span>
+      </h5>
+    </div>
+  </div>
+
+  <a href="{% url 'Soapbox:soapbox-detail' pk=soapbox.id %}">
+    <p>{{ soapbox.message_html|safe }}</p>
+  </a>
+  <p>Created on: {{soapbox.created_at}}</p>
+</div>

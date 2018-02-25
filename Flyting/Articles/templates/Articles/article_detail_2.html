@@ -52,7 +52,7 @@
           <div class="jumbotron">
             <h2>{{article.question}}</h2>
             <br>
-            <h4>Total Votes: <div class="totalVotes">{{total_votes}}</div></h4>
+            <h4>Total Votes: <div class="totalVotes">{{ article.get_total_votes }}</div></h4>
           </div>
 
           <div class="row">
@@ -105,11 +105,25 @@
     <br>
 
     {# Top SoapBox #}
-    <a class="btn btn-lg btn-dark" href="{% url 'Soapbox:soapbox-art-list' art_pk=article.pk %}">
-      <div class="">
-        <h3>Top SoapBoxes</h3>
+    <div class="artTopSoapbox row">
+      <div class="col-lg-12">
+        <h3>Top Soapbox</h3>
       </div>
-    </a>
+      <div class="col-lg-12">
+        {% if art_top_soapbox %}
+          {% for soapbox in art_top_soapbox %}
+            {% include "Soapbox/_soapbox_inject.html" %}
+          {% endfor %}
+        {% else %}
+          <h5>No Soapboxes yet...</h5>
+        {% endif %}
+      </div>
+      <div class="col-lg-12 text-center">
+        <a style="width:100%;" class="btn btn-dark" href="{% url 'Soapbox:soapbox-art-list' art_pk=article.pk %}">
+          <h5>All Soapboxes</h5>
+        </a>
+      </div>
+    </div>
 
   </div>
 {% endblock %}

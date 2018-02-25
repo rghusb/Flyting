@@ -1,8 +1,35 @@
 
-<div class="jumbotron">
+<div class="jumbotron slimJumbo">
+  <div class="row">
+    <div class="col-lg-6 text-left">
+      <h5 style="margin:0;">@: <a href="{% url "Accounts:profile-detail" pk=soapbox.customuser.id %}">{{soapbox.customuser.username}}</a>  -  <em>{{ soapbox.team }}</em></h5>
+    </div>
+
+    <div class="col-lg-6 soapboxPointButtons text-right">
+      <h5>Points:
+        <span class="{{ soapbox.id }}">{{ soapbox.points }}</span>
+        <button type="button" class="upvote btn btn-dark" value="{{ soapbox.id }}" name="button">+</button>
+        <button type="button" class="downvote btn btn-dark" value="{{ soapbox.id }}" name="button">-</button>
+        <a class="btn btn-dark" href="{% url 'Soapbox:convinced' soap_pk=soapbox.id %}">I'm Convinced</a>
+      </h5>
+    </div>
+  </div>
+
   <a href="{% url "Soapbox:soapbox-detail" pk=soapbox.id %}">
-    <h2>{{ soapbox.message_html|safe }}</h2>
+    <p>{{ soapbox.message_html|safe }}</p>
   </a>
-  <p>By: <a href="{% url "Accounts:profile-detail" pk=soapbox.customuser.id %}">{{soapbox.customuser.username}}</a></p>
   <p>Created on: {{soapbox.created_at}}</p>
 </div>
+
+{% if soapbox.parent_soapbox_rebuttals.exists %}
+  <ul class="comment-list">
+    {% with rebuttal=soapbox.parent_soapbox_rebuttals.first %}
+      <li class="comment">
+        <h5>Top Rebuttal</h5>
+        {% include "Rebuttal/_top_rebuttal.html" %}
+      </li>
+    {% endwith %}
+  </ul>
+{% else %}
+{% endif %}
+<hr>

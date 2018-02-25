@@ -45,7 +45,13 @@ class ArticleDetailView(SelectRelatedMixin, generic.DetailView):
         except Exception:
             pass
         context['total_votes'] = self.object.get_total_votes()
-        context['sources'] = ['1', '2', '3']
+        try:
+            context['art_top_soapbox'] = [self.object.art_soapboxes.first()]
+            if context['art_top_soapbox'][0] == None:
+                context['art_top_soapbox'] = None
+        except Exception:
+            print('Article Top Soapbox Problem')
+        context['sources'] = ['1','2','3']
         return context
 
 

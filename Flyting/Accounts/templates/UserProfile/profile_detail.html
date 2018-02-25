@@ -11,12 +11,12 @@
             <div class="profileGraphic" style=""></div>
             <br>
             <input type="button" name="" value="Follow">
-            <p style="margin-bottom:0;">234 Follwers</p>
-            <p style="margin-bottom:0;">14,112 Points</p>
+            <p style="margin-bottom:0;">{{ object.followers }} Follwers</p>
+            <p style="margin-bottom:0;">101,010 Points</p>
             <br>
           </div>
           <div class="col-lg-8">
-            <h3 style="text-align:right;">{{customuser.username}}</h3>
+            <h2 style="text-align:right;">{{customuser.username}}</h2>
             <hr>
             <div class="fakeBar"></div>
             <p>Persuasion</p>
@@ -71,8 +71,25 @@
         <br>
 
         {# User's Top SoapBox #}
-        <div class="topSoapBoxProfile">
-          <h3>Top SoapBox</h3>
+        <div class="artTopSoapbox row">
+          <div class="col-lg-12">
+            <h3>{{ customuser.username }}'s Top Soapbox</h3>
+          </div>
+          <div class="col-lg-12">
+            {% if user_top_soapbox %}
+              {% for soapbox in user_top_soapbox %}
+                {% include "Soapbox/_soapbox_inject.html" %}
+              {% endfor %}
+            {% else %}
+              <h5>No Soapboxes yet...</h5>
+            {% endif %}
+          </div>
+          <div class="col-lg-12 text-center">
+            <a style="width:100%;" class="btn btn-dark" href="{% url 'Soapbox:soapbox-user-list' user_pk=customuser.id %}">
+              <h5>All {{customuser.username}}'s Soapboxes</h5>
+            </a>
+          </div>
+
         </div>
 
       </div>

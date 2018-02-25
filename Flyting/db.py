@@ -13,10 +13,13 @@ def runCommand(cur_command):
     results = "Command not found"
     if cur_command == 'clearvotes':
         results = clearVotes()
+    if cur_command == 'clearRebuttalVotes':
+        results = clearRebuttalVotes()
     print(results)
 
 # Functions
 from Articles.models import Vote, Choice
+from Soapbox.models import Rebuttal, RebuttalVote
 
 def clearVotes():
     print("Clearing Votes...")
@@ -28,6 +31,16 @@ def clearVotes():
             choice.votes = 0
             choice.save()
     return "Cleared Votes"
+
+def clearRebuttalVotes():
+    print("Clearing Rebuttal Votes...")
+    if len(RebuttalVote.objects.all()) > 0:
+        for vote in RebuttalVote.objects.all():
+            vote.delete()
+        for rebuttal in Rebuttal.objects.all():
+            rebuttal.points = 0
+            rebuttal.save()
+    return "Cleared Rebuttal Votes"
 
 # End Functions
 

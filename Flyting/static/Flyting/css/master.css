@@ -135,3 +135,15 @@ a:hover {
   border: 5px solid;
 }
 /* End Article CSS */
+
+.slimJumbo {
+  padding: 3rem 3rem;
+}
+
+.slimmerJumbo {
+  padding: 1rem 1rem;
+}
+
+ul {
+  list-style: none;
+}

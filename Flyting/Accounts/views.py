@@ -4,6 +4,7 @@ from django.views.generic import CreateView, DetailView
 
 from . import models
 from . import forms
+from Soapbox.models import Soapbox
 
 from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
@@ -25,7 +26,7 @@ class ProfileDetailView(DetailView):
             id__iexact=self.kwargs.get("pk")
         )
 
-    # def get_context_data(self, **kwargs):
-    #     context = super().get_context_data(**kwargs)
-    #     context["all_users"] = self.request.user
-    #     return context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['user_top_soapbox'] = [self.object.user_soapboxes.first()]
+        return context

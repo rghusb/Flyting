@@ -1,0 +1,23 @@
+{% extends "Soapbox/soapbox_base.html" %}
+
+{% block pre_soapbox %}
+  <div class="col-lg-12">
+    <h3>{{ soapbox_user.username }}'s Top Soabox Posts</h3>
+    <hr>
+  </div>
+{% endblock %}
+
+{% block soapbox_content %}
+  <div class="col-lg-12">
+    {% if soapbox_list %}
+      {% for soapbox in soapbox_list %}
+        {% include "Soapbox/_soapbox_inject.html" %}
+      {% endfor %}
+    {% else %}
+      <h5>User has no soapbox posts yet...</h5>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% block post_soapbox %}
+{% endblock %}

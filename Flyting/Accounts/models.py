@@ -4,7 +4,7 @@ from django.utils import timezone
 
 
 class CustomUser(auth.models.AbstractUser):
-    somename = models.CharField(max_length=255, default="WOWOWOW")
+    followers = models.IntegerField(default=0)
 
     def __str__(self):
         return "@{}".format(self.username)

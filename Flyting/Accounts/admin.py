@@ -3,7 +3,16 @@ from django.contrib.auth.admin import UserAdmin
 
 from Accounts import models
 
-admin.site.register(models.CustomUser, UserAdmin)
+class CustomUserAdmin(UserAdmin):
+    model = models.CustomUser
+
+    extra_customuser_fields = ('followers',)
+
+    fieldsets = UserAdmin.fieldsets + (
+            (None, {'fields': extra_customuser_fields}),
+    )
+
+admin.site.register(models.CustomUser, CustomUserAdmin)
 
 # Define an inline admin descriptor for Employee model
 # which acts a bit like a singleton

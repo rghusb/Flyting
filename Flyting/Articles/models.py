@@ -81,3 +81,7 @@ class Vote(models.Model):
 
     class Meta:
         unique_together = ["article", "customuser"]
+
+# class Source(models.Model):
+#     article = models.ForeignKey(Article, on_delete=models.CASCADE)
+#     header = models.CharField(max_length=255, blank=False, default="Article-Source")

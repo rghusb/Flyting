@@ -1,10 +1,80 @@
 {% extends "Soapbox/soapbox_base.html" %}
 
-{% block soapbox_content %}
+{% block pre_soapbox %}
+  <div class="col-lg-12 text-center">
+    <h2>{{ soapbox.article.question }}</h2>
+    <hr>
+  </div>
   <div class="col-lg-12">
-    <h3>{{ soapbox.message_html|safe }}</h3>
-    <h3>{{ soapbox.article.question }}</h3>
-    <br>
-    <h5>Article ID: {{ soapbox.article.id }}</h5>
+    <h3>Soapbox</h3>
+    {% include "Soapbox/_soapbox_inject.html" %}
   </div>
 {% endblock %}
+
+{% block soapbox_content %}
+  <div class="col-lg-12">
+    <hr>
+    <div class="col-lg-12 text-center">
+      <a class="blah btn btn-dark" href="{% url 'Soapbox:rebuttal-create' soap_pk=soapbox.pk %}">
+        <h6>Submit New Rebuttal (CHANGE TO OTHER TEAMS ONLY AFTER TESTING)</h6>
+      </a>
+    </div>
+
+    <h3>Rebuttals</h3>
+
+    {% if soapbox_rebuttals %}
+      {# <ul class="comment-list"> #}
+        {% for rebuttal in soapbox_rebuttals %}
+          {# <li class="comment"> #}
+            {% include "Rebuttal/_rebuttal.html" %}
+          {# </li> #}
+        {% endfor %}
+      {# </ul> #}
+    {% else %}
+      <h5>No rebuttals yet...</h5>
+    {% endif %}
+  </div>
+{% endblock %}
+
+{% if user.is_authenticated %}
+  {% block javascript %}
+    <script type="text/javascript">
+      $('.rebuttalUpvote').each(function(i, obj) {
+        $(this).click(function( e ) {
+          e.preventDefault();
+          $.ajax({
+            url: "{% url 'Soapbox:rebuttal-upvote' %}",
+            data: {
+              'rebuttal_id': $(this).val(),
+            },
+            dataType: 'json',
+            success: function(data) {
+              $(data.div_edit).html(data.new_total);
+            },
+            error: function(data) {
+              alert("Please login to vote! Likely not auth problem actually");
+            },
+          });
+        })
+      });
+      $('.rebuttalDownvote').each(function(i, obj) {
+        $(this).click(function( e ) {
+          e.preventDefault();
+          $.ajax({
+            url: "{% url 'Soapbox:rebuttal-downvote' %}",
+            data: {
+              'rebuttal_id': $(this).val(),
+            },
+            dataType: 'json',
+            success: function(data) {
+              $(data.div_edit).html(data.new_total);
+            },
+            error: function(data) {
+              alert("Please login to vote! Likely not auth problem actually");
+            },
+          });
+        })
+      });
+    </script>
+  {% endblock %}
+{% endif %}

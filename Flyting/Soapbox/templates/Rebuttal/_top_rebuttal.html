@@ -1,0 +1,21 @@
+
+<div class="jumbotron slimmerJumbo">
+  <div class="row">
+    <div class="col-lg-6 text-left">
+      <h5 style="margin:0;">@: <a href="{% url "Accounts:profile-detail" pk=rebuttal.customuser.id %}">{{rebuttal.customuser.username}}</a>  -  <em>{{ rebuttal.team }}</em></h5>
+    </div>
+
+    <div class="col-lg-6 soapboxPointButtons text-right">
+      <h5>Points:
+        <span class="{{ rebuttal.id }}">{{ rebuttal.points }}</span>
+        {# <button type="button" class="rebuttalUpvote btn btn-dark" value="{{ rebuttal.id }}" name="button">+</button> #}
+        {# <button type="button" class="rebuttalDownvote btn btn-dark" value="{{ rebuttal.id }}" name="button">-</button> #}
+        {# <a class="btn btn-dark" href="{% url 'Soapbox:rebuttal-reply-create' soap_pk=rebuttal.parent.id reb_pk=rebuttal.id %}">Reply</a> #}
+      </h5>
+    </div>
+  </div>
+
+
+  <p>{{ rebuttal.message_html|safe }}</p>
+  <p>Created on: {{rebuttal.created_at}}</p>
+</div>

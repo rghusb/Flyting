@@ -1,5 +1,13 @@
 {% extends "Categories/category_base.html" %}
 
+{% block pre_category %}
+  <div class="col-lg-12 text-center">
+    <h1>{{ category.name }} Articles</h1>
+    <h4>Total: {{ category.articles.count }}</h4>
+    <hr>
+  </div>
+{% endblock %}
+
 {% block category_content %}
   <div class="col-lg-12">
   	{% if category.articles.count == 0 %}
