@@ -2,11 +2,15 @@
 
 {% block pre_soapbox %}
   <div class="col-lg-12 text-center">
-    <h2>{{ soapbox.article.question }}</h2>
+    <a href="{% url 'Articles:article-detail' pk=soapbox.article.id %}">
+      <h1>{{ soapbox.article.question }}</h1>
+    </a>
     <hr>
   </div>
   <div class="col-lg-12">
-    <h3>Soapbox</h3>
+    <a href="{% url 'Soapbox:soapbox-art-list' art_pk=soapbox.article.id %}">
+      <h3>Soapbox</h3>
+    </a>
     {% include "Soapbox/_soapbox_inject.html" %}
   </div>
 {% endblock %}
@@ -15,8 +19,8 @@
   <div class="col-lg-12">
     <hr>
     <div class="col-lg-12 text-center">
-      <a class="blah btn btn-dark" href="{% url 'Soapbox:rebuttal-create' soap_pk=soapbox.pk %}">
-        <h6>Submit New Rebuttal (CHANGE TO OTHER TEAMS ONLY AFTER TESTING)</h6>
+      <a class="pageButton btn btn-dark" href="{% url 'Soapbox:rebuttal-create' soap_pk=soapbox.pk %}">
+        <h6>Submit New Rebuttal</h6>
       </a>
     </div>
 

@@ -16,6 +16,8 @@
   </div>
 
 
-  <p>{{ rebuttal.message_html|safe }}</p>
-  <p>Created on: {{rebuttal.created_at}}</p>
+  <a href="{% url 'Soapbox:soapbox-detail' pk=rebuttal.parent.id %}">
+    <p>{{ rebuttal.message_html|safe }}</p>
+  </a>
+  <em>Created on: {{rebuttal.created_at}}</em>
 </div>

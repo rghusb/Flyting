@@ -4,12 +4,14 @@
   <div class="col-lg-12">
     <h4>Create New Rebuttal</h4>
     {% if reply_bool %}
+      <p>Rebuttal Reply</p>
       <form method="POST" action="{% url 'Soapbox:rebuttal-reply-create' soap_pk=soapbox.id reb_pk=view.kwargs.reb_pk %}" id="soapboxForm">
       	{% csrf_token %}
-      	{{ form.as_up }}
+      	{{ form.as_ul }}
       	<input type="submit" value="Post" class="btn btn-primary btn-large">
       </form>
     {% else %}
+      <p>{{ soapbox.message_html|safe }}</p>
       <form method="POST" action="{% url 'Soapbox:rebuttal-create' soap_pk=soapbox.id %}" id="soapboxForm">
         {% csrf_token %}
         {{ form.as_ul }}

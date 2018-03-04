@@ -32,18 +32,27 @@
   margin-top: 10px;
 }
 
-.imageBox {
-  border: 2px solid black;
+.imageBox img {
+  /* border: 2px solid black; */
+  max-width:100%;
+  max-height:100%;
 }
 
 .dailyDripHeader {
-  background-color: lightgrey;
+  background: linear-gradient(rgba(123,0,162,0.9), rgba(123,0,162,0.65));
+  color: rgba(255,255,255,1.0);
   text-align: center;
   padding: 15px 0px 15px 0px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .dailyDrip {
-  border: 1px solid;
+  border-radius: 12px;
+  background: white;
+  /* border: 1px solid; */
+  padding-bottom: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .topZinger {
@@ -128,7 +137,7 @@ a:hover {
 }
 
 .topZingerArticle {
-  border: 5px solid;
+  /* border: 5px solid; */
 }
 
 .topSoapBoxArticle {
@@ -137,13 +146,66 @@ a:hover {
 /* End Article CSS */
 
 .slimJumbo {
+  background: rgba(60,0,80,0.18);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 3rem 3rem;
 }
 
 .slimmerJumbo {
+  background: rgba(60,0,80,0.18);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   padding: 1rem 1rem;
 }
 
 ul {
   list-style: none;
+}
+
+.FlytingLogo {
+  width: 150px;
+}
+
+.nbCSS {
+  /* background-color: rgba(123,0,162,0.65); */
+  background: linear-gradient(rgba(95,14,97,1), rgba(123,0,162,0.8));
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* ul.navLinkCSS {
+  color: #fffffff5;
+}
+
+nav a {
+  color: red;
+} */
+.articleJumbo {
+  background: rgba(60,0,80,0.18);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+body {
+  background: #d3d3d33b;
+}
+
+.pageButton {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rebuttal {
+  background: rgba(60,0,80,0.18);
+}
+
+.trophy {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-radius: 7px;
+}
+
+.sourceImg img{
+  width: 60%;
+  height: 60%;
+}
+
+.upvoteImg img{
+  width: 10%;
+  height: 10%;
 }

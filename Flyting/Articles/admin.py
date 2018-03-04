@@ -6,3 +6,4 @@ from . import models
 admin.site.register(models.Article)
 admin.site.register(models.Choice)
 admin.site.register(models.Vote)
+admin.site.register(models.Source)

@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load staticfiles %}
+
 {% block content %}
   {# Main Row #}
   <div class="row">
@@ -7,43 +9,45 @@
     {# Main Content Column #}
     <div class="col-lg-8 col-md-6 mainContent">
 
-      <div class="AD">
-        <h5>728x90 AD SPACE</h5>
-      </div>
-
       <div class="sponsoredQuestion">
-        <h3>SPONSORED QUESTION</h3>
+        <h3>Sponsored Questions</h3>
         <hr>
-        {% if sponsored_list %}
-          {% for sponsored_article in sponsored_list %}
-            <a href="{% url 'Articles:article-detail' pk=sponsored_article.id %}">
-              <div class="sponsoredContentImage">
-                <h4>HEADER IMAGE</h4>
+        <div class="row">
+          {% if sponsored_list %}
+            {% for sponsored_article in sponsored_list %}
+              <div class="col-lg-4 text-center">
+                <a href="{% url 'Articles:article-detail' pk=sponsored_article.id %}">
+                  <div class="sponsoredContentImage imageBox">
+                    <img src="{% static 'Flyting/images/F.png' %}" alt="Story Image">
+                  </div>
+                  <h5>{{ sponsored_article.question }}</h5>
+                </a>
               </div>
-              <p>{{ sponsored_article.question }}</p>
-            </a>
-          {% endfor %}
-        {% else %}
-          <div class="sponsoredContentImage">
-            <h4>HEADER IMAGE</h4>
-          </div>
-          <p>HEADLINE</p>
-        {% endif %}
+            {% endfor %}
+          {% else %}
+            <div class="sponsoredContentImage">
+              <h4>HEADER IMAGE</h4>
+            </div>
+            <p>HEADLINE</p>
+          {% endif %}
+        </div>
       </div>
 
       <div class="mainPageItem">
-        <h3>Politics</h3>
+        <h3>
+          <a href="{% url 'Categories:detail' slug='politics' %}">Politics</a>
+        </h3>
         <hr>
 
         <div class="row">
           {% if politics_list %}
             {% for politics_article in politics_list %}
-              <div class="col-lg-4">
+              <div class="col-lg-4 text-center">
                 <a href="{% url 'Articles:article-detail' pk=politics_article.id %}">
                   <div class="imageBox">
-                    <h4>STORY IMAGE</h4>
+                    <img src="{% static 'Flyting/images/F.png' %}" alt="Story Image">
                   </div>
-                  <p>{{politics_article.question}}</p>
+                  <h5>{{politics_article.question}}</h5>
                 </a>
               </div>
             {% endfor %}
@@ -74,18 +78,20 @@
       </div>
 
       <div class="mainPageItem">
-        <h3>Culture</h3>
+        <h3>
+          <a href="{% url 'Categories:detail' slug='culture' %}">Culture</a>
+        </h3>
         <hr>
 
         <div class="row">
           {% if culture_list %}
             {% for culture_article in culture_list %}
-              <div class="col-lg-4">
+              <div class="col-lg-4 text-center">
                 <a href="{% url 'Articles:article-detail' pk=culture_article.id %}">
                   <div class="imageBox">
-                    <h4>STORY IMAGE</h4>
+                    <img src="{% static 'Flyting/images/F.png' %}" alt="Story Image">
                   </div>
-                  <p>{{culture_article.question}}</p>
+                  <h5>{{culture_article.question}}</h5>
                 </a>
               </div>
             {% endfor %}
@@ -116,18 +122,20 @@
       </div>
 
       <div class="mainPageItem">
-        <h3>SPORTS</h3>
+        <h3>
+          <a href="{% url 'Categories:detail' slug='sports' %}">Sports</a>
+        </h3>
         <hr>
 
         <div class="row">
           {% if sports_list %}
             {% for sports_article in sports_list %}
-              <div class="col-lg-4">
+              <div class="col-lg-4 text-center">
                 <a href="{% url 'Articles:article-detail' pk=sports_article.id %}">
                   <div class="imageBox">
-                    <h4>STORY IMAGE</h4>
+                    <img src="{% static 'Flyting/images/F.png' %}" alt="Story Image">
                   </div>
-                  <p>{{sports_article.question}}</p>
+                  <h5>{{sports_article.question}}</h5>
                 </a>
               </div>
             {% endfor %}
@@ -155,10 +163,6 @@
           {% endif %}
         </div>
 
-      </div>
-
-      <div class="AD">
-        <h5>728x90 AD SPACE</h5>
       </div>
 
     </div>
@@ -202,11 +206,11 @@
           {% endif %}
         </ol>
       </div>
-      <div class="topZinger">
-        <h3 style="text-align:center;">Top Zinger</h3>
-        <p>@Rob 1/5/2018</p>
-        <p>I'd agree with you, but then we'd BOTH be wrong.</p>
-      </div>
+      {# <div class="topZinger"> #}
+        {# <h3 style="text-align:center;">Top Zinger</h3> #}
+        {# <p>@Rob 1/5/2018</p> #}
+        {# <p>I'd agree with you, but then we'd BOTH be wrong.</p> #}
+      {# </div> #}
     </div>
     {# End Daily Drip Column #}
 

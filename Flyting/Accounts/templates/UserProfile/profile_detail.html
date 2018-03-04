@@ -10,65 +10,47 @@
           <div class="col-lg-4 leftHeader">
             <div class="profileGraphic" style=""></div>
             <br>
-            <input type="button" name="" value="Follow">
-            <p style="margin-bottom:0;">{{ object.followers }} Follwers</p>
-            <p style="margin-bottom:0;">101,010 Points</p>
+            <button type="button" class="btn btn-dark" name="button"><b>Follow</b></button>
+            <h5 style="margin-bottom:2px;margin-top:2px;">{{ object.followers }} Follwers</h5>
+            <h5 style="margin-bottom:0;">101,010 Points</h5>
             <br>
           </div>
           <div class="col-lg-8">
-            <h2 style="text-align:right;">{{customuser.username}}</h2>
+            <h1 style="text-align:right;">{{customuser.username}}</h1>
             <hr>
             <div class="fakeBar"></div>
-            <p>Persuasion</p>
+            <h5 style="margin-bottom:20px;">Persuasion</h5>
             <div class="fakeBar"></div>
-            <p>Wit</p>
+            <h5 style="margin-bottom:20px;">Wit</h5>
             <div class="fakeBar"></div>
-            <p>Vigor</p>
+            <h5 style="margin-bottom:20px;">Vigor</h5>
             <div class="fakeBar"></div>
-            <p>Understanding</p>
+            <h5 style="margin-bottom:20px;">Understanding</h5>
           </div>
         </div>
 
         {# Trophies #}
-        <div class="">
-          <table>
-            <tr>
-              <td>Trophy 1</td>
-              <td>Trophy 2</td>
-              <td>Trophy 3</td>
-              <td>Trophy 4</td>
-            </tr>
-            <tr>
-              <td>Trophy 5</td>
-              <td>Trophy 6</td>
-              <td>Trophy 7</td>
-              <td>Trophy 8</td>
-            </tr>
-          </table>
+        <div class="row">
+          <div class="col-lg-12">
+            <h3>Trophies</h3>
+          </div>
         </div>
-
-        <br>
-
-        {# AD space #}
-        <div class="AD" style="padding:10px;">
-          <h5>900X90 AD SPACE</h5>
+        <div class="jumbotron articleJumbo">
+          <div class="row">
+            <div class="col-lg-3 imageBox">
+              <img src="{% static 'Flyting/images/trophy_icon.png' %}" class="trophy" alt="Trophy">
+            </div>
+            <div class="col-lg-3 imageBox">
+              <img src="{% static 'Flyting/images/trophy_icon.png' %}" class="trophy" alt="Trophy">
+            </div>
+            <div class="col-lg-3 imageBox">
+              <img src="{% static 'Flyting/images/trophy_icon.png' %}" class="trophy" alt="Trophy">
+            </div>
+            <div class="col-lg-3 imageBox">
+              <img src="{% static 'Flyting/images/trophy_icon.png' %}" class="trophy" alt="Trophy">
+            </div>
+          </div>
         </div>
-
-        <br>
-
-        {# User's Top Zinger #}
-        <div class="topZingerProfile">
-          <h3>Top Zinger</h3>
-        </div>
-
-        <br>
-
-        {# AD Space #}
-        <div class="AD" style="padding:10px;">
-          <h5>900X90 AD SPACE</h5>
-        </div>
-
-        <br>
 
         {# User's Top SoapBox #}
         <div class="artTopSoapbox row">
@@ -85,11 +67,25 @@
             {% endif %}
           </div>
           <div class="col-lg-12 text-center">
-            <a style="width:100%;" class="btn btn-dark" href="{% url 'Soapbox:soapbox-user-list' user_pk=customuser.id %}">
+            <a style="width:100%;" class="pageButton btn btn-dark" href="{% url 'Soapbox:soapbox-user-list' user_pk=customuser.id %}">
               <h5>All {{customuser.username}}'s Soapboxes</h5>
             </a>
           </div>
 
+        </div>
+
+        <br>
+
+        {# User's Top Zinger #}
+        <div class="topZingerArticle row">
+          <div class="col-lg-12">
+            <h3>Top Zinger</h3>
+          </div>
+          <div class="col-lg-12">
+            <div class="jumbotron articleJumbo">
+              <h5>Zingers coming soon...</h5>
+            </div>
+          </div>
         </div>
 
       </div>

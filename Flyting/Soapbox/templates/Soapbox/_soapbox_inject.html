@@ -15,5 +15,5 @@
   <a href="{% url 'Soapbox:soapbox-detail' pk=soapbox.id %}">
     <p>{{ soapbox.message_html|safe }}</p>
   </a>
-  <p>Created on: {{soapbox.created_at}}</p>
+  <em>Created on: {{soapbox.created_at}}</em>
 </div>

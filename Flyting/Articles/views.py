@@ -51,7 +51,15 @@ class ArticleDetailView(SelectRelatedMixin, generic.DetailView):
                 context['art_top_soapbox'] = None
         except Exception:
             print('Article Top Soapbox Problem')
-        context['sources'] = ['1','2','3']
+        print("1")
+        try:
+            print("2")
+            context['sources'] = models.Source.objects.all()
+            print("3")
+        except Exception:
+            print("4")
+            context['sources'] = None
+        print("5")
         return context
 
 
