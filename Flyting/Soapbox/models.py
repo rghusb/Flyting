@@ -16,7 +16,7 @@ CustomUser = get_user_model()
 class Soapbox(models.Model):
     customuser = models.ForeignKey(CustomUser, related_name="user_soapboxes", on_delete=models.CASCADE)
     article = models.ForeignKey(Article, related_name="art_soapboxes", blank=False, on_delete=models.CASCADE)
-    created_at = models.DateTimeField(default=time.strftime("%Y-%m-%d %H:%M"))
+    created_at = models.DateTimeField(auto_now=True)
     message = models.TextField()
     message_html = models.TextField(editable=False)
     team = models.CharField(max_length=100, default="None")

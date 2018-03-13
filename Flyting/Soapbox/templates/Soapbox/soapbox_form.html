@@ -1,13 +1,15 @@
 {% extends "Soapbox/soapbox_base.html" %}
 
 {% block soapbox_content %}
-  <div class="col-lg-12">
-    <h4>Create New SoapBox</h4>
-    <p>{{ soapbox_article.question }}</p>
-    <form method="POST" action="{% url 'Soapbox:soapbox-create' art_pk=soapbox_article.id %}" id="soapboxForm">
-    	{% csrf_token %}
-    	{{ form.as_ul }}
-    	<input type="submit" value="Post" class="btn btn-primary btn-large">
-    </form>
+  <div class="col-lg-12 text-center">
+    <div class="jumbotron">
+      <h4>Create New SoapBox</h4>
+      <p>{{ soapbox_article.question }}</p>
+      <form method="POST" action="{% url 'Soapbox:soapbox-create' art_pk=soapbox_article.id %}" id="soapboxForm">
+        {% csrf_token %}
+        {{ form.as_ul }}
+        <input type="submit" value="Post" class="btn btn-primary btn-large">
+      </form>
+    </div>
   </div>
 {% endblock %}

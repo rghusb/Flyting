@@ -209,3 +209,7 @@ body {
   width: 10%;
   height: 10%;
 }
+
+.nav-tabs .nav-link.active {
+  background-color: rgba(60,0,80,0.18);
+}

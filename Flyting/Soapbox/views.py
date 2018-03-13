@@ -27,7 +27,7 @@ CustomUser = get_user_model()
 class SoapboxDetailView(SelectRelatedMixin, generic.DetailView):
     model = models.Soapbox
     select_related = ('customuser','article',)
-    template_name = "SoapBox/soapbox_detail.html"
+    template_name = "Soapbox/soapbox_detail.html"
 
     def get_queryset(self):
         queryset = super().get_queryset()
