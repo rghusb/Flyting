@@ -20,7 +20,7 @@ class HomePage(ListView):
         context['politics_list'] = context['object_list'].filter(category_id=1)[:3]
         context['culture_list'] = context['object_list'].filter(category_id=2)[:3]
         context['sports_list'] = context['object_list'].filter(category_id=3)[:3]
-        context['sponsored_list'] = context['object_list'].filter(category_id=3)[:3]
+        context['sponsored_list'] = context['object_list'][:3]
         return context
 
 class LoginSuccessPage(TemplateView):
