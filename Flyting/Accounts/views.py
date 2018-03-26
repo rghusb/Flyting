@@ -28,5 +28,7 @@ class ProfileDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['user_top_soapbox'] = [self.object.user_soapboxes.first()]
+        usr_top_soapbox = self.object.user_soapboxes.first()
+        if usr_top_soapbox:
+            context['user_top_soapbox'] = [usr_top_soapbox]
         return context
